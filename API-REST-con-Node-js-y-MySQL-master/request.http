@@ -6,20 +6,25 @@ POST http://localhost:8080/api HTTP/1.1
 Content-Type: application/json
 
 {
-    "titulo": "los 7 habitos d elas personas altamente efectivas",
-    "autor": "Stephen Covey",
-    "edicion": 7
+    "titulo": "Como crear una API REST con Node js y MySQL | CRUD (Create, Read, Update, Delete)",
+    "emisor": "MonkeyWit",
+    "duracion": "42:34",
+    "enlace": "https://www.youtube.com/watch?v=OWukxSRtr-A",
+    "album": "Sin Album"
 }
 
-###
-DELETE http://localhost:8080/api/2 HTTP/1.1
 
 ###
-PUT http://localhost:8080/api/1 HTTP/1.1
+DELETE http://localhost:8080/api/1 HTTP/1.1
+
+###
+PUT http://localhost:8080/api/2 HTTP/1.1
 Content-Type: application/json
 
 {
-    "titulo": "una breve historia del tiempo",
-    "autor": "Stephen Hawking",
-    "edicion": 3
+    "titulo": "Como crear una API REST con Node js y MySQL | CRUD (Create, Read, Update, Delete)",
+    "emisor": "MonkeyWit",
+    "duracion": "42:34",
+    "enlace": "https://www.youtube.com/watch?v=OWukxSRtr-A",
+    "album": "Album no encontrado"
 }

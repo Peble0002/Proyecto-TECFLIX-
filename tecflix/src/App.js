@@ -1,44 +1,44 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import Navbar from './Components/Navbar';
-import listaVideos from './Components/listaVideos';
+import React, { Fragment, useState, useEffect} from 'react';
+import Navbar from './Components/Navbar'
+import ListaVideos from './Components/listaVideos'
 
 
-function  App(){
+function App() {
 
   const [videos, setVideos] = useState([])
 
-  useEffect(() => {
-      const getVideo=()=>{
-        fetch('http://localhost:8080/api')
-        .then(res => res.json())
-        .then(res => setVideos(res))
-      }
-      getVideo();
-    }, [])
-  
+  useEffect(() => {  
+    const getVideo = () => {
+     fetch('http://localhost:8080/api')
+       .then(res => res.json())
+       //.then(res => console.log(res))
+       .then(res => setVideos(res))
+   }
+    getVideo();
+  }, [])
 
-    return (
-      <Fragment>
-     <Navbar brand='Canciones'/>
-     <div className="container">
+
+  return (
+    <Fragment>
+      <Navbar brand='Video List' />
+      <div className="container">
         <div className="row">
           <div className="col-7">
-            <h2 style={{textAlign: 'center'}}>Lista de Videos</h2>
-            <listaVideos videos={videos}/>
-            
+            <h2 style={{ textAlign: 'center' }}>Videos</h2>
+            <ListaVideos videos={videos} />
           </div>
           <div className="col-5">
-            <h2 style={{textAlign: 'center'}}>Agregar Video</h2>
-            
-            
+            <h2 style={{ textAlign: 'center' }}>Video Add</h2>
+
+
           </div>
         </div>
       </div>
-      </Fragment>
-      
-    );
+    </Fragment>
 
-//<video={video} setVideo={setVideo}/>
+  );
+
+  //<video={video} setVideo={setVideo}/>
 }
 
 export default App;
