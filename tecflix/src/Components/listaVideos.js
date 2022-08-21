@@ -18,10 +18,30 @@ const listaVideos = ({ video, setVideo, videos, setListUpdated }) => {
 
     const handleUpdate = id => {
         //validación de los datos
-        if (titulo === '' || emisor === '' || duracion === '' || enlace === '' || album === '') {
-            alert('Todos los campos son obligatorios')
+        if (enlace === '') {
+            alert('The Link Field is required')
             return
         }
+        //Seteamos los valores automaticamente con el enlace
+        //titulo: '',
+          //  emisor: '',
+            //duracion: '',
+            //album: 
+            if (titulo === '') {
+                titulo =''     
+            }
+            if (emisor === '') {
+                emisor =''     
+            }
+            if (duracion === '') {
+                duracion =''     
+            }
+            if (album === '') {
+                album =''     
+            }
+           
+    
+        
         const requestInit = {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
@@ -51,9 +71,9 @@ const listaVideos = ({ video, setVideo, videos, setListUpdated }) => {
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Titulo</th>
-                    <th>Emisor</th>
-                    <th>Duracion</th>
+                    <th>Title</th>
+                    <th>Transmitter</th>
+                    <th>Duration</th>
                     <th>Album</th>
                 </tr>
             </thead>
@@ -67,11 +87,12 @@ const listaVideos = ({ video, setVideo, videos, setListUpdated }) => {
                         <td>{video.album}</td>
                         <td>
                             <div className="mb-3">
-                                <button onClick={() => handleDelete(video.id)} className="btn btn-danger">Delete</button>
+                                <button onClick={() => handleUpdate(video.id_Video)} className="btn btn-success">Update</button>
                             </div>
                             <div className="mb-3">
-                                <button onClick={() => handleUpdate(video.id)} className="btn btn-dark">Update</button>
+                                <button onClick={() => handleDelete(video.id_Video)} className="btn btn-danger">Delete</button>
                             </div>
+
                         </td>
                     </tr>
 
