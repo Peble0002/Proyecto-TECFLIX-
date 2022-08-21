@@ -15,7 +15,7 @@ const Form = ({ video, setVideo }) => {
 
         //validación de los datos
         if (enlace === '') {
-            alert('El Campo de Enlace es obligatorio')
+            alert('The Link Field is required')
             return
         }
 
