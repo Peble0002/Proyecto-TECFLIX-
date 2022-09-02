@@ -35,6 +35,12 @@ function App() {
   return (
     <Fragment>
       <Navbar brand='Video List' />
+      <div id="menubar">
+        <ul id="menu">
+          <li><a href="App.js">Inicio</a></li>
+          <li class="selected"><a href="App1.js">Mis Videos</a></li>
+        </ul>
+      </div>
       <div className="container">
         <div className="row">
           <div className="col-7">

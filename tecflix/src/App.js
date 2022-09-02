@@ -43,6 +43,12 @@ export default class App extends React.Component {
   return (
 
     <div className='App'>
+      <div id="menubar">
+        <ul id="menu">
+          <li class="selected"><a href="App.js">Inicio</a></li>
+          <li><a href="App1.js">Mis Videos</a></li>
+        </ul>
+      </div>
       <Search onSearch={this.onSearch} />
       <VideoList onVideoSelected={this.onVideoSelected}
       data={this.state.videoMetaInfo}/>
