@@ -1,10 +1,11 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './Components/Navbar'
 import ListaVideos from './Components/listaVideos'
 import Form from './Components/formVideo';
 
 
-function App() {
+
+function App1() {
 
 
   const [video, setVideo] = useState({
@@ -33,15 +34,11 @@ function App() {
 
 
   return (
-    <Fragment>
-      <Navbar brand='Video List' />
-      <div id="menubar">
-        <ul id="menu">
-          <li><a href="App.js">Inicio</a></li>
-          <li class="selected"><a href="App1.js">Mis Videos</a></li>
-        </ul>
-      </div>
-      <div className="container">
+
+
+
+    <div className="container">
+      <div>
         <div className="row">
           <div className="col-7">
             <h2 style={{ textAlign: 'center' }}>Videos</h2>
@@ -50,15 +47,16 @@ function App() {
           <div className="col-5">
             <h2 style={{ textAlign: 'center' }}>Video Add</h2>
             <Form video={video} setVideo={setVideo} />
-
           </div>
         </div>
       </div>
-    </Fragment>
+    </div>
+
 
   );
 
   //<video={video} setVideo={setVideo}/>
+
 }
 
-export default App;
+export default App1;

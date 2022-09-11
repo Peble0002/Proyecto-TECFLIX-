@@ -6,24 +6,25 @@ import React, { ReactComponent } from 'react';
 import youtubeApi from './api/youtube'
 import VideoList from './Components/VideoList'
 import VideoPlayer from './Components/VideoPlayer'
+import App1 from './App1';
 
 export default class App extends React.Component {
 
   state = {
-      videoMetaInfo:[],
-      selectedVideoId: null
+    videoMetaInfo: [],
+    selectedVideoId: null
   }
 
   onVideoSelected = videoId => {
     this.setState({
-      selectedVideoId:videoId
+      selectedVideoId: videoId
     })
   }
 
   onSearch = async keyword => {
     const response = await youtubeApi.get("/search", {
       params: {
-        q:keyword
+        q: keyword
       }
     })
 
@@ -39,23 +40,23 @@ export default class App extends React.Component {
 
   }
 
-  render(){
-  return (
-
+  render() {
+    return (
+<html>
+  <body>
+    <App1></App1>
       <div className='App'>
-        <div id="menubar">
-          <ul id="menu">
-            <li class="selected"><a href="App.js">Inicio</a></li>
-            <li><a href="App1.js">Mis Videos</a></li>
-          </ul>
-        </div>
-     
+        <div>
           <Search onSearch={this.onSearch} />
           <VideoList onVideoSelected={this.onVideoSelected}
-           data={this.state.videoMetaInfo} />
+            data={this.state.videoMetaInfo} />
           <VideoPlayer videoId={this.state.selectedVideoId} />
+        </div>
+
         <div />
       </div>
+      </body>
+      </html>
     )
   }
 }
