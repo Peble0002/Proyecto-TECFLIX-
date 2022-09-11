@@ -42,22 +42,23 @@ export default class App extends React.Component {
 
   render() {
     return (
-<html>
-  <body>
-    <App1></App1>
-      <div className='App'>
-        <div>
-          <Search onSearch={this.onSearch} />
-          <VideoList onVideoSelected={this.onVideoSelected}
-            data={this.state.videoMetaInfo} />
-          <VideoPlayer videoId={this.state.selectedVideoId} />
-        </div>
+      <html>
+        <body>
+        <h1>TECFLIX</h1>
+                <App1></App1>
+                <div className='App'>
+                  <div>
+                    <Search onSearch={this.onSearch} />
+                    <VideoList onVideoSelected={this.onVideoSelected}
+                      data={this.state.videoMetaInfo} />
+                    <VideoPlayer videoId={this.state.selectedVideoId} />
+                  </div>
 
-        <div />
-      </div>
-      </body>
-      </html>
-    )
+                  <div />
+                </div>
+              </body>
+              </html>
+            )
   }
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import youtubeApi from 'C:/Users/pablo/OneDrive/Documents/GitHub/Proyecto-TECFLIX-/tecflix/src/api/youtube.js'
 const Form = ({ video, setVideo }) => {
 
     const handleChange = e => {
@@ -18,7 +18,19 @@ const Form = ({ video, setVideo }) => {
             alert('The Link Field is required')
             return
         }
-
+        const response = youtubeApi.get(video.enlace)
+        if (titulo === '') {
+            titulo =response.titulo
+        }
+        if (emisor === '') {
+            emisor =response.emisor     
+        }
+        if (duracion === '') {
+            duracion =response.duracion     
+        }
+        if (album === '') {
+            album =response.album     
+        }
         //consulta
         const requestInit = {
             method: 'POST',

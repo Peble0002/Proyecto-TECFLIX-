@@ -16,7 +16,7 @@ const listaVideos = ({ video, setVideo, videos, setListUpdated }) => {
 
     let { titulo, emisor, duracion, enlace, album } = video
 
-    const handleUpdate = id => {
+    const handleUpdate = video1 => {
         //validación de los datos
         if (enlace === '') {
             alert('The Link Field is required')
@@ -28,16 +28,16 @@ const listaVideos = ({ video, setVideo, videos, setListUpdated }) => {
             //duracion: '',
             //album: 
             if (titulo === '') {
-                titulo =''     
+                titulo =video1.titulo     
             }
             if (emisor === '') {
-                emisor =''     
+                emisor =video1.emisor     
             }
             if (duracion === '') {
-                duracion =''     
+                duracion =video1.duracion     
             }
             if (album === '') {
-                album =''     
+                album =video1.album     
             }
            
     
@@ -47,7 +47,7 @@ const listaVideos = ({ video, setVideo, videos, setListUpdated }) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(video)
         }
-        fetch('http://localhost:8080/api/' + id, requestInit)
+        fetch('http://localhost:8080/api/' + video1.id, requestInit)
             .then(res => res.text())
             .then(res => console.log(res))
 
@@ -62,6 +62,9 @@ const listaVideos = ({ video, setVideo, videos, setListUpdated }) => {
 
         setListUpdated(true)
     }
+    const play = enlace =>{
+
+    }
 
 
 
@@ -70,7 +73,7 @@ const listaVideos = ({ video, setVideo, videos, setListUpdated }) => {
         <table className="table">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    
                     <th>Title</th>
                     <th>Transmitter</th>
                     <th>Duration</th>
@@ -79,18 +82,20 @@ const listaVideos = ({ video, setVideo, videos, setListUpdated }) => {
             </thead>
             <tbody>
                 {videos.map(video => (
-                    <tr key={video.id_Video}>
-                        <td>{video.id_Video}</td>
+                    <tr key={video.id_Video}>                        
                         <td>{video.titulo}</td>
                         <td>{video.emisor}</td>
                         <td>{video.duracion}</td>
                         <td>{video.album}</td>
                         <td>
                             <div className="mb-3">
-                                <button onClick={() => handleUpdate(video.id_Video)} className="btn btn-success">Update</button>
+                                <button onClick={() => handleUpdate(video)} className="btn btn-success btn-sm">Update</button>
                             </div>
                             <div className="mb-3">
-                                <button onClick={() => handleDelete(video.id_Video)} className="btn btn-danger">Delete</button>
+                                <button onClick={() => handleDelete(video.id_Video)} className="btn btn-danger btn-sm">Delete</button>
+                            </div>
+                            <div className="mb-3">
+                                <button onClick={() => play(video.enlace)} className="btn btn-primary btn-sm">Play</button>
                             </div>
 
                         </td>
