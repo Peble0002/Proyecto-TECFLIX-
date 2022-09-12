@@ -1,7 +1,8 @@
 import React from 'react';
-import youtubeApi from 'C:/Users/pablo/OneDrive/Documents/GitHub/Proyecto-TECFLIX-/tecflix/src/api/youtube.js'
+
 const Form = ({ video, setVideo }) => {
 
+    //Aqui se setea los datos del formulario a las variables de video
     const handleChange = e => {
         setVideo({
             ...video,
@@ -18,18 +19,18 @@ const Form = ({ video, setVideo }) => {
             alert('The Link Field is required')
             return
         }
-        const response = youtubeApi.get(video.enlace)
+        const response = ''
         if (titulo === '') {
-            titulo =response.titulo
+            titulo = response.titulo
         }
         if (emisor === '') {
-            emisor =response.emisor     
+            emisor = response.emisor
         }
         if (duracion === '') {
-            duracion =response.duracion     
+            duracion = response.duracion
         }
         if (album === '') {
-            album =response.album     
+            album = response.album
         }
         //consulta
         const requestInit = {
@@ -56,29 +57,32 @@ const Form = ({ video, setVideo }) => {
 
     return (
         <form onSubmit={handleSubmit}>
+
+
             <div className="mb-3">
+
                 <label htmlFor="titulo" className="form-label">Video Title</label>
-                <input value={titulo} name="titulo" onChange={handleChange} type="text" id="titulo" className="form-control"/>
+                <input value={titulo} name="titulo" onChange={handleChange} type="text" id="titulo" className="form-control" />
             </div>
             <div className="mb-3">
                 <label htmlFor="emisor" className="form-label">Video Transmitter</label>
-                <input value={emisor} name="emisor" onChange={handleChange} type="text" id="emisor" className="form-control"/>
+                <input value={emisor} name="emisor" onChange={handleChange} type="text" id="emisor" className="form-control" />
             </div>
             <div className="mb-3">
                 <label htmlFor="duracion" className="form-label">Video Duration</label>
-                <input value={duracion} name="duracion" onChange={handleChange} type="text" id="duracion" className="form-control"/>
+                <input value={duracion} name="duracion" onChange={handleChange} type="text" id="duracion" className="form-control" />
             </div>
             <div className="mb-3">
                 <label htmlFor="enlace" className="form-label">Video Link* </label>
                 <input value={enlace} name="enlace" onChange={handleChange} type="text" id="enlace" className="form-control" />
-                
+
             </div>
             <p class="text-left" >The Link Field is required*</p>
             <div className="mb-3">
                 <label htmlFor="album" className="form-label">Video album</label>
-                <input value={album} name="album" onChange={handleChange} type="text" id="album" className="form-control"/>
+                <input value={album} name="album" onChange={handleChange} type="text" id="album" className="form-control" />
             </div>
-           
+
             <button type="submit" className="btn btn-primary">Submit</button>
         </form>
     );
