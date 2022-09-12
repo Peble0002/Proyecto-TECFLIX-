@@ -3,7 +3,8 @@ import axios from 'axios'
 
 const KEY = "AIzaSyAT0s35mNKCsIEfKkE18YJR-4ofsTUKb-I"
  
-
+//Para este caso se  conecta por medio del url al api de google
+//Donde se idndica que muestre en 30 resultados de acuerdo a la palabra ingresada
 export default axios.create({
     baseURL : 'https://www.googleapis.com/youtube/v3',
     params:{

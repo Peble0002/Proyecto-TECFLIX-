@@ -10,17 +10,18 @@ import App1 from './App1';
 
 export default class App extends React.Component {
 
+//Variable para comprobar el estado de los datos, como no se selecciona uno, inicia como vacio
   state = {
     videoMetaInfo: [],
     selectedVideoId: null
   }
-
+//Permite obtener a partir del video seleccionado la informacion
   onVideoSelected = videoId => {
     this.setState({
       selectedVideoId: videoId
     })
   }
-
+//Permite pasar la palabra clave a comparar los posibles resultados que estan asociados
   onSearch = async keyword => {
     const response = await youtubeApi.get("/search", {
       params: {

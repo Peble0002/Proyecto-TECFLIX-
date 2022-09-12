@@ -2,7 +2,7 @@ import React from "react";
 import "../stylesheets/_video.css";
 function selectVideo(videoIdObj, onVideoSelected) {
   onVideoSelected(videoIdObj.videoId);
-}
+}//Funcion obtiene la imagen previa dle video
 function getCss(imageurl) {
   const _styles = {
     backgroundImage: `url(${imageurl})`,
@@ -13,6 +13,13 @@ function getCss(imageurl) {
   };
   return _styles;
 }
+/**
+ * 
+ * Entradas: Datos del video donde se tiene el id y snippet dentro, todo esto del video seleccionado
+ * Salidas: Imagen y posibilidad de reproducir el video
+*
+ * 
+ */
 function constructVideoTitles(vidoesData, onVideoSelected) {
   return vidoesData.map(({ snippet, id }, index) => {
     return (

@@ -1,5 +1,12 @@
 import React from "react";
 
+/**
+ * 
+ * Entradas: ID del video que contiene la unformacion del mismo
+ * Salidas: Iframe de acuerdo a los datos de entrada, que permite reproducir el video
+*
+ * 
+ */
 const Videoplayer = ({ videoId }) => {
   if (!videoId) {
     return (

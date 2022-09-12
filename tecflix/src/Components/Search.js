@@ -1,6 +1,7 @@
 import React from "react";
 
-//Clase que se encarga de ser el componente de busqueda
+//Clase que se encarga de ser el componente de busqueda\
+//En esta se ingresa la palabra u oracion para la busquedad
 class Search extends React.Component {
     state={tittle: "" }
 
