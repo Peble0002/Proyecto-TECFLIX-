@@ -147,7 +147,7 @@ const listaVideos = ({ video, setVideo, videos, setListUpdated }) => {
                     <iframe
                         title={video.titulo}
                         className="video-iframe"
-                        src={`https://www.youtube.com/embed/${video.titulo.substr(32,100)}`}
+                        src={`https://www.youtube.com/embed/${video.enlace.substr(32,100)}`}
                     />
                 </div>
 
