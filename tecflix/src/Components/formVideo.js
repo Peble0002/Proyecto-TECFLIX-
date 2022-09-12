@@ -1,5 +1,5 @@
 import React from 'react';
-import youtubeApi from 'C:/Users/pablo/OneDrive/Documents/GitHub/Proyecto-TECFLIX-/tecflix/src/api/youtube.js'
+import youtubeApi from "../api/youtube"
 const Form = ({ video, setVideo }) => {
 
     const handleChange = e => {
