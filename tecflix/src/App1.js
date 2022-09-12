@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ListaVideos from './Components/listaVideos'
 import Form from './Components/formVideo';
-import Videoplayer from './Components/VideoPlayer';
-
 
 
 function App1() {
