@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-08-2022 a las 23:14:53
+-- Tiempo de generación: 11-09-2022 a las 22:49:27
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -24,17 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `td_listareproduccion`
---
-
-CREATE TABLE `td_listareproduccion` (
-  `id_lista` int(11) NOT NULL,
-  `Nombre` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `td_video`
 --
 
@@ -44,29 +33,21 @@ CREATE TABLE `td_video` (
   `emisor` varchar(50) NOT NULL,
   `duracion` varchar(50) NOT NULL,
   `enlace` varchar(500) NOT NULL,
-  `album` varchar(50) NOT NULL
+  `album` varchar(50) NOT NULL,
+  `listaReproduccion` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `video_lista`
+-- Volcado de datos para la tabla `td_video`
 --
 
-CREATE TABLE `video_lista` (
-  `id_Video` int(11) DEFAULT NULL,
-  `id_lista` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `td_video` (`id_Video`, `titulo`, `emisor`, `duracion`, `enlace`, `album`, `listaReproduccion`) VALUES
+(2, 'Cabareteando.- Dallas', 'Franco Escamilla', '18:49', 'https://www.youtube.com/watch?v=W3WHyJYG-F0', 'Sin Album', NULL),
+(3, 'Rick y Morty Temporada 4 Episodio 10 - Explicación', 'SCA - Entretenimiento', ' 2:32', 'https://www.youtube.com/watch?v=ApJLCj_whHo', 'Sin album', NULL);
 
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `td_listareproduccion`
---
-ALTER TABLE `td_listareproduccion`
-  ADD PRIMARY KEY (`id_lista`);
 
 --
 -- Indices de la tabla `td_video`
@@ -75,38 +56,14 @@ ALTER TABLE `td_video`
   ADD PRIMARY KEY (`id_Video`);
 
 --
--- Indices de la tabla `video_lista`
---
-ALTER TABLE `video_lista`
-  ADD KEY `id_Video` (`id_Video`),
-  ADD KEY `id_lista` (`id_lista`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
-
---
--- AUTO_INCREMENT de la tabla `td_listareproduccion`
---
-ALTER TABLE `td_listareproduccion`
-  MODIFY `id_lista` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `td_video`
 --
 ALTER TABLE `td_video`
-  MODIFY `id_Video` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `video_lista`
---
-ALTER TABLE `video_lista`
-  ADD CONSTRAINT `video_lista_ibfk_1` FOREIGN KEY (`id_Video`) REFERENCES `td_video` (`id_Video`),
-  ADD CONSTRAINT `video_lista_ibfk_2` FOREIGN KEY (`id_lista`) REFERENCES `td_listareproduccion` (`id_lista`);
+  MODIFY `id_Video` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

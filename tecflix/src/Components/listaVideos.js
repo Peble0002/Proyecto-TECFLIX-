@@ -16,38 +16,35 @@ const listaVideos = ({ video, setVideo, videos, setListUpdated }) => {
 
     let { titulo, emisor, duracion, enlace, album } = video
 
-    const handleUpdate = video1 => {
+    const handleUpdate = video => {
         //validación de los datos
-        if (enlace === '') {
-            alert('The Link Field is required')
-            return
-        }
+
         //Seteamos los valores automaticamente con el enlace
-        //titulo: '',
-          //  emisor: '',
-            //duracion: '',
-            //album: 
-            if (titulo === '') {
-                titulo =video1.titulo     
-            }
-            if (emisor === '') {
-                emisor =video1.emisor     
-            }
-            if (duracion === '') {
-                duracion =video1.duracion     
-            }
-            if (album === '') {
-                album =video1.album     
-            }
-           
-    
-        
+
+        if (titulo === '') {
+            titulo = video.titulo
+        }
+        if (enlace === '') {
+            titulo = video.enlace
+        }
+        if (emisor === '') {
+            emisor = video.emisor
+        }
+        if (duracion === '') {
+            duracion = video.duracion
+        }
+        if (album === '') {
+            album = video.album
+        }
+
+
+
         const requestInit = {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(video)
         }
-        fetch('http://localhost:8080/api/' + video1.id, requestInit)
+        fetch('http://localhost:8080/api/' + video.id, requestInit)
             .then(res => res.text())
             .then(res => console.log(res))
 
@@ -62,50 +59,86 @@ const listaVideos = ({ video, setVideo, videos, setListUpdated }) => {
 
         setListUpdated(true)
     }
-    const play = enlace =>{
+    const play = (enlace1, titulo) => {
+        <div className="video-player">
+            <iframe
+                title={titulo}
+                className="video-iframe"
+                src={enlace1}
+            />
+        </div>
+    }
 
+    function Buscar() {
+        var tabla = document.getElementById('tblVideo');
+        var busqueda = document.getElementById('txtBusqueda').value.toLowerCase();
+        var cellsOfRow="";
+        var found=false;
+        var compareWith="";
+        for (var i = 1; i < tabla.rows.length; i++) {
+            cellsOfRow = tabla.rows[i].getElementsByTagName('td');
+            found = false;
+            for (var j = 0; j < cellsOfRow.length && !found; j++) { compareWith = cellsOfRow[j].innerHTML.toLowerCase(); if (busqueda.length == 0 || (compareWith.indexOf(busqueda) > -1))
+                {
+                    found = true;
+                }
+            }
+            if(found)
+            {
+                tabla.rows[i].style.display = '';
+            } else {
+                tabla.rows[i].style.display = 'none';
+            }
+        }
     }
 
 
-
-
     return (
-        <table className="table">
-            <thead>
-                <tr>
-                    
-                    <th>Title</th>
-                    <th>Transmitter</th>
-                    <th>Duration</th>
-                    <th>Album</th>
-                </tr>
-            </thead>
-            <tbody>
-                {videos.map(video => (
-                    <tr key={video.id_Video}>                        
-                        <td>{video.titulo}</td>
-                        <td>{video.emisor}</td>
-                        <td>{video.duracion}</td>
-                        <td>{video.album}</td>
-                        <td>
-                            <div className="mb-3">
-                                <button onClick={() => handleUpdate(video)} className="btn btn-success btn-sm">Update</button>
-                            </div>
-                            <div className="mb-3">
-                                <button onClick={() => handleDelete(video.id_Video)} className="btn btn-danger btn-sm">Delete</button>
-                            </div>
-                            <div className="mb-3">
-                                <button onClick={() => play(video.enlace)} className="btn btn-primary btn-sm">Play</button>
-                            </div>
 
-                        </td>
+        <div>
+
+            <h2>Filtrando Tabla HTML con JavaScript</h2>
+            <form>Busqueda: <input id="txtBusqueda" type="text" onkeyup="Buscar();" />
+            <button onClick={() => Buscar()} className="btn btn-success btn-sm">Buscar</button>
+
+            </form>
+            
+            <table className="table dataTables" id="tblVideo">
+                
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Transmitter</th>
+                        <th>Duration</th>
+                        <th>Album</th>
                     </tr>
-
-                ))}
-
-
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {videos.map(video => (
+                        <tr key={video.id_Video}>
+                            <td>{video.titulo}</td>
+                            <td>{video.emisor}</td>
+                            <td>{video.duracion}</td>
+                            <td>{video.album}</td>
+                            <td>
+                                <div className="mb-3">
+                                    <button onClick={() => handleUpdate(video)} className="btn btn-success btn-sm">Update</button>
+                                </div>
+                                <div className="mb-3">
+                                    <button onClick={() => handleDelete(video.id_Video)} className="btn btn-danger btn-sm">Delete</button>
+                                </div>
+                                <div className="mb-3">
+                                    <button type="submit" className="btn btn-primary btn-sm">Play</button>
+                                    <>{play(video.elace, video.title)}</>
+                                </div>
+                                <div>
+                                </div>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+                    </div>
     );
 }
 

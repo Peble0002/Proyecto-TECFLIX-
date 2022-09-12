@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './Components/Navbar'
 import ListaVideos from './Components/listaVideos'
 import Form from './Components/formVideo';
+import Videoplayer from './Components/VideoPlayer';
 
 
 
@@ -49,6 +49,8 @@ function App1() {
             <Form video={video} setVideo={setVideo} />
           </div>
         </div>
+             
+        
       </div>
     </div>
 
