@@ -10,18 +10,18 @@ import App1 from './App1';
 
 export default class App extends React.Component {
 
-//Variable para comprobar el estado de los datos, como no se selecciona uno, inicia como vacio
+  //Variable para comprobar el estado de los datos, como no se selecciona uno, inicia como vacio
   state = {
     videoMetaInfo: [],
     selectedVideoId: null
   }
-//Permite obtener a partir del video seleccionado la informacion
+  //Permite obtener a partir del video seleccionado la informacion
   onVideoSelected = videoId => {
     this.setState({
       selectedVideoId: videoId
     })
   }
-//Permite pasar la palabra clave a comparar los posibles resultados que estan asociados
+  //Permite pasar la palabra clave a comparar los posibles resultados que estan asociados
   onSearch = async keyword => {
     const response = await youtubeApi.get("/search", {
       params: {
@@ -41,6 +41,10 @@ export default class App extends React.Component {
 
   }
 
+  reload = () => {
+    window.location.reload(true);
+  }
+
   render() {
     return (
       <html>
@@ -51,14 +55,17 @@ export default class App extends React.Component {
           <div className="container">
             <div className="row">
               <div className="col-7">
-              <Search onSearch={this.onSearch} />
-              <VideoPlayer videoId={this.state.selectedVideoId} />
-                
+                <div>
+                  <button onClick={this.reload} type="button" className="btn btn-primary">Refresh</button>
+                </div>
+                <Search onSearch={this.onSearch} />
+                <VideoPlayer videoId={this.state.selectedVideoId} />
+
               </div>
               <div className="col-5"></div>
-              
-                <VideoList onVideoSelected={this.onVideoSelected}
-                  data={this.state.videoMetaInfo} />
+
+              <VideoList onVideoSelected={this.onVideoSelected}
+                data={this.state.videoMetaInfo} />
             </div>
             <div />
           </div>
